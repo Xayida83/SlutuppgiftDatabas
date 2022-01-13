@@ -10,6 +10,8 @@ namespace SlutuppgiftDatabasLotta.Models
         public DateTime? ReturnDate { get; set; }
         public Customer Customer { get; set; }
         public Book Book { get; set; }
+
+       
        
     }
 }

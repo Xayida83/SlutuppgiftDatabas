@@ -34,7 +34,7 @@ namespace SlutuppgiftDatabasLotta.Data
                     ISBN = "123456789",
                     Rating = 3,
                     YearOfIssue = 1987,
-                    Lent = false
+                    Lent = true
                 },
                 new Book
                 {
@@ -68,21 +68,35 @@ namespace SlutuppgiftDatabasLotta.Data
             {
                 new Book_Author
                 {
-                   Book = books.SingleOrDefault(list => list.Id == 1),
-                   Author = författare.SingleOrDefault(list => list.Id == 1)
+                   Book = books.SingleOrDefault(b => b.Id == 1),
+                   Author = författare.SingleOrDefault(a => a.Id == 1)
                 },
-                new Book_Author 
+                new Book_Author
                 {
-                    Book = books.SingleOrDefault(list => list.Id == 3),
-                    Author= författare.SingleOrDefault(list => list.Id == 3)
+                    Book = books.SingleOrDefault(b => b.Id == 3),
+                    Author= författare.SingleOrDefault(a => a.Id == 3)
                 },
                   new Book_Author
                 {
-                    Book = books.SingleOrDefault(list => list.Id == 4),
-                    Author= författare.SingleOrDefault(list => list.Id == 3 )
+                    Book = books.SingleOrDefault(b => b.Id == 4),
+                    Author= författare.SingleOrDefault(a => a.Id == 3 )
                 }
             };
             context.BooksAndAuthor.AddRange(authorBook);
+            context.SaveChanges();
+
+            var customerBook = new List<Customer_Book>
+            {
+                new Customer_Book
+                {
+                    Book = books.SingleOrDefault(b=> b.Id == 1),
+                    Customer = customers.FirstOrDefault(c=> c.CardNumber == 1),
+                    LoanDate = System.DateTime.Now,
+                    ReturnDate = System.DateTime.Now.AddDays(30)
+
+                }
+            };
+            context.CustomerAndBooks.AddRange(customerBook);
             context.SaveChanges();
         }
     }

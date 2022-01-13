@@ -36,7 +36,7 @@ namespace SlutuppgiftDatabasLotta.Controllers
 
             if (book == null)
             {
-                return NotFound();
+                return NotFound((new { error = "Book not found" }));
             }
 
             return book;
@@ -91,7 +91,7 @@ namespace SlutuppgiftDatabasLotta.Controllers
             var book = await _context.Books.FindAsync(id);
             if (book == null)
             {
-                return NotFound();
+                return NotFound(new { error = "Book not found" });
             }
 
             _context.Books.Remove(book);

@@ -37,7 +37,7 @@ namespace SlutuppgiftDatabasLotta.Controllers
 
             if (book_Author == null)
             {
-                return NotFound();
+                return NotFound((new { error = "Author not found" }));
             }
 
             return book_Author;

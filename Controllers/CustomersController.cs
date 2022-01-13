@@ -85,7 +85,7 @@ namespace SlutuppgiftDatabasLotta.Controllers
             return CreatedAtAction("GetCustomer", new { id = customer.CardNumber }, customer);
         }
         //Låna en bok
-        //POST: api/Customer/1/2
+        //POST: api/Customers/loanabook/1/2
         [HttpPost]
         [Route("loanabook/{cardNumber}/{bookId}")]
         public async Task<IActionResult> LoanABook(int cardNumber, int bookId)
@@ -93,7 +93,7 @@ namespace SlutuppgiftDatabasLotta.Controllers
             var customer = await _context.Customer.SingleOrDefaultAsync(c => c.CardNumber == cardNumber);
             if (customer is null) return BadRequest(new { error = "Cardnumber dont exist" });
 
-            var book = await _context.Books.SingleOrDefaultAsync(b => b.Id == bookId);
+            var book = await _context.Books.SingleOrDefaultAsync(b => b.Id == bookId && b.Lent == false);
             if (book is null) return BadRequest(new { error = "Book dont exist" });
 
             var rentalObject = new Customer_Book
@@ -113,7 +113,7 @@ namespace SlutuppgiftDatabasLotta.Controllers
             return Ok();
         }
         //Lämna tillbaka en bok
-        //POST: api/Customer/1/2
+        //POST: api/Customers/returnabook/1/2
         [HttpPost]
         [Route("returnabook/{cardNumber}/{bookId}")]
         public async Task<IActionResult> ReturnABook(int cardNumber, int bookId)
@@ -125,7 +125,7 @@ namespace SlutuppgiftDatabasLotta.Controllers
             if (book is null) return BadRequest(new { error = "Book dont exist" });
 
             var rentalObject = await _context.CustomerAndBooks.SingleOrDefaultAsync(cb => cb.CardNumber == cardNumber && cb.BookId == bookId);
-            if (rentalObject is null) return BadRequest(new { error = "Det blev fel" });
+            if (rentalObject is null) return BadRequest(new { error = "Something went wrong" });
 
             _context.CustomerAndBooks.Remove(rentalObject);
 
@@ -143,7 +143,7 @@ namespace SlutuppgiftDatabasLotta.Controllers
             var customer = await _context.Customer.FindAsync(id);
             if (customer == null)
             {
-                return NotFound();
+                return NotFound((new { error = "Customer not found" }));
             }
 
             _context.Customer.Remove(customer);

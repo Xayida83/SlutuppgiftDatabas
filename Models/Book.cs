@@ -8,10 +8,8 @@ namespace SlutuppgiftDatabasLotta.Models
         public int Id { get; set; }
         public string BookTitle { get; set; }
         public string ISBN { get; set; }
-        [AllowNull]
-        public int YearOfIssue { get; set; }
-        [AllowNull]
-        public int Rating { get; set; }
+        public int? YearOfIssue { get; set; }
+        public int? Rating { get; set; }
         public bool Lent { get; set; } = false; 
         
 

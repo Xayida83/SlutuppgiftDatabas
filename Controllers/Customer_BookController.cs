@@ -118,5 +118,27 @@ namespace SlutuppgiftDatabasLotta.Controllers
         {
             return _context.CustomerAndBooks.Any(e => e.CardNumber == id);
         }
+
+        // api/Customer_Book/allmybooks/1
+        [HttpGet]
+        [Route("allmybooks/{cardNumber}")]
+        public IActionResult AllMyBooks(int cardNumber)
+        {
+            var myBooks = _context.CustomerAndBooks.Where(x => x.CardNumber == cardNumber).ToList();
+            List<MyBooks> myBookList = new();
+           
+            foreach (var book in myBooks)
+            {
+                var bookTitle = _context.Books.SingleOrDefault(x => x.Id == book.BookId).BookTitle;
+                myBookList.Add(new MyBooks { BookTitle = bookTitle});
+            }
+            return Ok(myBookList);
+        }
+
+        internal class MyBooks
+        {
+            public string BookTitle { get; set; }
+        }
     }
+
 }

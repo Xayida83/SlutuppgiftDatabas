@@ -13,8 +13,8 @@ namespace SlutuppgiftDatabasLotta.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -29,8 +29,8 @@ namespace SlutuppgiftDatabasLotta.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BookTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ISBN = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    YearOfIssue = table.Column<int>(type: "int", nullable: false),
-                    Rating = table.Column<int>(type: "int", nullable: false),
+                    YearOfIssue = table.Column<int>(type: "int", nullable: true),
+                    Rating = table.Column<int>(type: "int", nullable: true),
                     Lent = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -45,9 +45,7 @@ namespace SlutuppgiftDatabasLotta.Migrations
                     CardNumber = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LoanDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ReturnDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -83,7 +81,9 @@ namespace SlutuppgiftDatabasLotta.Migrations
                 columns: table => new
                 {
                     CardNumber = table.Column<int>(type: "int", nullable: false),
-                    BookId = table.Column<int>(type: "int", nullable: false)
+                    BookId = table.Column<int>(type: "int", nullable: false),
+                    LoanDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ReturnDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {

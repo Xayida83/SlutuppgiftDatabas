@@ -10,8 +10,8 @@ using SlutuppgiftDatabasLotta.Data;
 namespace SlutuppgiftDatabasLotta.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220111141752_addedDateToCB")]
-    partial class addedDateToCB
+    [Migration("20220114080049_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,10 +55,10 @@ namespace SlutuppgiftDatabasLotta.Migrations
                     b.Property<bool>("Lent")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Rating")
+                    b.Property<int?>("Rating")
                         .HasColumnType("int");
 
-                    b.Property<int>("YearOfIssue")
+                    b.Property<int?>("YearOfIssue")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

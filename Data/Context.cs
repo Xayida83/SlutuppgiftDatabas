@@ -44,6 +44,7 @@ namespace SlutuppgiftDatabasLotta.Data
                 .HasOne(cb => cb.Customer)
                 .WithMany(c => c.Customer_Book)
                 .HasForeignKey(cb => cb.CardNumber);
+            
 
             modelBuilder.Entity<Book>()
                 .Property("YearOfIssue")

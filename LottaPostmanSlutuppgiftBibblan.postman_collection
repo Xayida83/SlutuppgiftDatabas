@@ -1,0 +1,324 @@
+{
+	"info": {
+		"_postman_id": "6b28164b-df44-4cbc-9b57-d21db9957306",
+		"name": "Bibblan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Uppgiften",
+			"item": [
+				{
+					"name": "Låna bok",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{bibblanUrl}}api/Customers/loanabook/1/2",
+							"host": [
+								"{{bibblanUrl}}api"
+							],
+							"path": [
+								"Customers",
+								"loanabook",
+								"1",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lämna tillbaka bok",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{bibblanUrl}}api/Customers/returnabook/1/1",
+							"host": [
+								"{{bibblanUrl}}api"
+							],
+							"path": [
+								"Customers",
+								"returnabook",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Skapa kund",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FirstName\":\"Padan\",\r\n    \"LastName\":\"Fain\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bibblanUrl}}api/Customers",
+							"host": [
+								"{{bibblanUrl}}api"
+							],
+							"path": [
+								"Customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ta bort kund",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Skapa bok",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"BookTitle\":\"Pippi på de sju haven\",\r\n    \"ISBN\":\"455144\"\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bibblanUrl}}api/Books",
+							"host": [
+								"{{bibblanUrl}}api"
+							],
+							"path": [
+								"Books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ta bort bok",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Skapa författare",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FirstName\":\"Brandon\",\r\n    \"LastName\":\"Sanderson\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{bibblanUrl}}api/Authors",
+							"host": [
+								"{{bibblanUrl}}api"
+							],
+							"path": [
+								"Authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ta bort författare med id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{bibblanUrl}}api/Authors/4",
+							"host": [
+								"{{bibblanUrl}}api"
+							],
+							"path": [
+								"Authors",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Utöver uppgiften",
+			"item": [
+				{
+					"name": "Book",
+					"item": [
+						{
+							"name": "Alla böcker",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{bibblanUrl}}api/books",
+									"host": [
+										"{{bibblanUrl}}api"
+									],
+									"path": [
+										"books"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Author",
+					"item": [
+						{
+							"name": "Se alla författare",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{bibblanUrl}}api/Authors",
+									"host": [
+										"{{bibblanUrl}}api"
+									],
+									"path": [
+										"Authors"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sök författare på id nummer",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{bibblanUrl}}api/Authors/3",
+									"host": [
+										"{{bibblanUrl}}api"
+									],
+									"path": [
+										"Authors",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "BooksAndAuthor",
+					"item": [
+						{
+							"name": "Se böcker och deras författare",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{bibblanUrl}}api/Book_Author",
+									"host": [
+										"{{bibblanUrl}}api"
+									],
+									"path": [
+										"Book_Author"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lägg till bok på författare",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Se alla kunder",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						},
+						{
+							"name": "Sök kund via kortnummer",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CustomerAndBooks",
+					"item": [
+						{
+							"name": "Kunder och deras lån",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						},
+						{
+							"name": "Se en specifik kunds lån",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
